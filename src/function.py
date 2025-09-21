@@ -3,15 +3,10 @@ import numpy as np
 class Function:
     """
     A collection of commonly used benchmark functions for optimization.
-
-    Attributes:
-        name (str): Name of the function set or instance.
     """
-    def __init__(self, name):
-        self.name = name
 
     @staticmethod
-    def sphere(params: np.ndarray) -> float:
+    def sphere(params: np.ndarray = np.arange(-5.12, 5.12, 0.1)) -> float:
         """
         Sphere function.
 
@@ -50,7 +45,7 @@ class Function:
         return (total - 1745) / 899
 
     @staticmethod
-    def ackley(params: np.ndarray, a = 20, b = .2, c = 2 * np.pi):
+    def ackley(params: np.ndarray = np.arange(-32.768, 32.768, 1.0), a = 20, b = .2, c = 2 * np.pi):
         """
         Ackley function.
 
@@ -78,7 +73,7 @@ class Function:
         return term1 + term2 + a + np.e
 
     @staticmethod
-    def rastrigin(params: np.ndarray) -> float:
+    def rastrigin(params: np.ndarray = np.arange(-5.12, 5.12, 0.6)) -> float:
         """
         Rastrigin function.
 
@@ -98,7 +93,7 @@ class Function:
         return 10 * n + total
 
     @staticmethod
-    def rosenbrock(params: np.ndarray) -> float:
+    def rosenbrock(params: np.ndarray = np.arange(-10, 10, 0.3)) -> float:
         """
         Rosenbrock function.
 
@@ -137,7 +132,7 @@ class Function:
         return (total - 3.827e5) / 3.755e5
 
     @staticmethod
-    def griewank(params: np.ndarray) -> float:
+    def griewank(params: np.ndarray = np.arange(-50, 50, 1.0)) -> float:
         """
         Griewank function.
 
@@ -160,7 +155,7 @@ class Function:
         return term1 - term2 + 1
 
     @staticmethod
-    def schwefel(params: np.ndarray) -> float:
+    def schwefel(params: np.ndarray = np.arange(-500, 500, 2.5)) -> float:
         """
         Schwefel function.
 
@@ -180,7 +175,7 @@ class Function:
         return 418.9829 * n - term
 
     @staticmethod
-    def levy(params: np.ndarray) -> float:
+    def levy(params: np.ndarray = np.arange(-10, 10, 0.1)) -> float:
         """
         Levy function.
 
@@ -218,7 +213,7 @@ class Function:
         return term1 + term2 + term3
 
     @staticmethod
-    def michalewicz(params: np.ndarray, constant = 10) -> float:
+    def michalewicz(params: np.ndarray = np.arange(0, np.pi, 0.1), constant = 10) -> float:
         """
         Michalewicz function.
 
@@ -237,7 +232,7 @@ class Function:
         return -term
 
     @staticmethod
-    def zakharov(params: np.ndarray) -> float:
+    def zakharov(params: np.ndarray = np.arange(-10, 10, 0.4)) -> float:
         """
         Zakharov function.
 
@@ -256,3 +251,20 @@ class Function:
         term2 = np.sum(0.5 * indices * params)
 
         return term1 + term2**2 + term2**4
+    
+    @staticmethod
+    def get_all_functions():
+        """
+        This method returns all test functions that have declared default values.
+        """
+        return [
+            Function.sphere,
+            Function.ackley,
+            Function.rastrigin,
+            Function.rosenbrock,
+            Function.griewank,
+            Function.schwefel,
+            Function.levy,
+            Function.michalewicz,
+            Function.zakharov
+        ]
