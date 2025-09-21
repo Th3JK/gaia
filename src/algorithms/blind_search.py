@@ -1,6 +1,6 @@
 import numpy as np
 
-from algorithm import Algorithm
+from algorithms.algorithm import Algorithm
 
 class BlindSearch(Algorithm):
     def __init__(self, lower_bound, upper_bound, function, iterations=1000):
@@ -12,9 +12,10 @@ class BlindSearch(Algorithm):
         x = np.random.uniform(self.lower_bound, self.upper_bound) 
         y = np.random.uniform(self.lower_bound, self.upper_bound)
         point = [x, y]
-        z = function(np.array(point))
+        z = self.function(np.array(point))
         min_z = z
         history.append((point[0], point[1], z))
+        k = 0
 
         while min_z != 0 and k < self.iterations:
             x = np.random.uniform(self.lower_bound, self.upper_bound)

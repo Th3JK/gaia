@@ -7,7 +7,7 @@ class Solution:
         self.upper_bound = upper_bound
         self.step = step
         self.function = function
-        self.algorithm = algorithm
+        self.algorithm = algorithm(lower_bound, upper_bound, function)
         self.history = []
 
     def find_minimum(self):
@@ -16,10 +16,10 @@ class Solution:
 
         all_points = self.algorithm.run()
 
-        for points in all_points:
-            current_value = self.function(np.array(points[-1]))
-            if current_value < best_value:
-                best_value = current_value
-                self.history.append(points)
+        for point in all_points:
+            x, y, z = point
+            if z < best_value:
+                best_value = z
+                self.history.append([point])
 
         return best_value

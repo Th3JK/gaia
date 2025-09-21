@@ -15,4 +15,5 @@ def run(algorithm):
         animator = Animator(solution)
         animator.save()
 
-run(BlindSearch)
+tmp = BlindSearch
+run(tmp)

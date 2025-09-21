@@ -37,19 +37,21 @@ class Animator:
 
         if index < len(self.solution.history) and self.solution.history[index]:
             for p in self.solution.history[index]:
-                z_value = self.solution.function(np.array(p))
-                if np.isfinite(z_value):
-                    point_plot, = self.ax.plot([p[0]], [p[1]], [z_value], 'ro', markersize=10)
-                    self.points.append(point_plot)
+                if len(p) == 3:
+                    x_val, y_val, z_val = p
+                else:
+                    x_val, y_val = p
+                    z_val = self.solution.function(np.array([x_val, y_val]))
+                
+                point_plot, = self.ax.plot([x_val], [y_val], [z_val], 'ro', markersize=10)
+                self.points.append(point_plot)
 
         return self.points
 
     def save(self):
-        self.plot_surface()
-        anim = FuncAnimation(self.fig, self.animate_frame, frames=min(len(self.solution.tmp), 50), interval=250)
-
-        if output_path is None:
-            output_path = f"../assets/{self.solution.algorithm.__name__}/{self.solution.function.__name__}.gif"
+        self.plot()
+        anim = FuncAnimation(self.fig, self.animate, frames=min(len(self.solution.history), 50), interval=250)
+        output_path = f"../assets/{self.solution.algorithm.__class__.__name__}/{self.solution.function.__name__}.gif"
 
         os.makedirs(os.path.dirname(output_path), exist_ok=True)
         anim.save(output_path, writer='pillow')
