@@ -253,18 +253,18 @@ class Function:
         return term1 + term2**2 + term2**4
     
     @staticmethod
-    def get_all_functions():
+    def get_all_functions() -> list:
         """
         This method returns all test functions that have declared default values.
         """
         return [
-            Function.sphere,
-            Function.ackley,
-            Function.rastrigin,
-            Function.rosenbrock,
-            Function.griewank,
-            Function.schwefel,
-            Function.levy,
-            Function.michalewicz,
-            Function.zakharov
+            (Function.sphere, np.arange(-5.12, 5.12, 0.1)),
+            (Function.ackley, np.arange(-32.768, 32.768, 1.0)),
+            (Function.rastrigin, np.arange(-5.12, 5.12, 0.6)),
+            (Function.rosenbrock, np.arange(-10, 10, 0.3)),
+            (Function.griewank, np.arange(-50, 50, 1.0)),
+            (Function.schwefel, np.arange(-500, 500, 2.5)),
+            (Function.levy, np.arange(-10, 10, 0.1)),
+            (Function.michalewicz, np.arange(0, np.pi, 0.1)),
+            (Function.zakharov, np.arange(-10, 10, 0.4))
         ]
