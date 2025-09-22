@@ -1,9 +1,10 @@
 import numpy as np
 
-from algorithms.algorithm import Algorithm
+from src.algorithms.algorithm import Algorithm
+
 
 class BlindSearch(Algorithm):
-    def __init__(self, lower_bound, upper_bound, function, iterations=1000):
+    def __init__(self, lower_bound, upper_bound, function, iterations=10_000):
         super().__init__(lower_bound, upper_bound, function, iterations)
 
     def run(self):

@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 
-from solution import Solution
+from src.solution import Solution
 
 class Animator:
     def __init__(self, solution: Solution):
@@ -13,6 +13,7 @@ class Animator:
         self.points = []
         self.params = [np.arange(self.solution.lower_bound, self.solution.upper_bound, self.solution.step) for _ in range(self.solution.dimension)]
         self.params = np.meshgrid(*self.params)
+        self._surface = None
 
     def plot(self):
         x, y = self.params
@@ -21,11 +22,12 @@ class Animator:
             for j in range(x.shape[1]):
                 z[i, j] = self.solution.function(np.array([x[i, j], y[i, j]]))
         
-        self.ax.plot_surface(x, y, z, cmap='magma', edgecolor='none', alpha=0.9)
+        self._surface = self.ax.plot_surface(x, y, z, cmap='magma', edgecolor='none', alpha=0.3)
         self.ax.set_title(f"{str.capitalize(self.solution.function.__name__)} function")
 
     def show(self):
-        self.plot
+        self.plot()
+        plt.show()
 
     def animate(self, index):
         print(f"Animating step #{index}")

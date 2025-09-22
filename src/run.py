@@ -1,9 +1,8 @@
 import matplotlib
 
-from function import Function
-from solution import Solution
-from animator import Animator
-from algorithms.blind_search import BlindSearch
+from src.function import Function
+from src.solution import Solution
+from src.animator import Animator
 
 def run(algorithm):
     matplotlib.use('TkAgg')
@@ -12,8 +11,6 @@ def run(algorithm):
         solution = Solution(2, params[0], params[1], params[2], function, algorithm)
         best = solution.find_minimum()
         print(f"Function: {function.__name__}, Algorithm: {algorithm.__name__}, Best found solution: {best}")
+
         animator = Animator(solution)
         animator.save()
-
-tmp = BlindSearch
-run(tmp)
