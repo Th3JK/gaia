@@ -21,28 +21,6 @@ class Function:
             float: Function value.
         """
         return float(np.sum(params**2))
-    
-    @staticmethod
-    def sphere_modified(params: np.ndarray) -> float:
-        """
-        Modified Sphere function for 6 dimensions with scaling.
-
-        Parameters:
-            params (np.ndarray): Input vector of length 6.
-
-        Returns:
-            float: Normalized function value.
-
-        Raises:
-            ValueError: If input vector length is not 6.
-        """
-        if len(params) != 6: 
-            raise ValueError("Input must be a vector of length 6")
-
-        i = np.arange(1, 7)
-        total = np.sum(params**2 * 2**i)
-
-        return (total - 1745) / 899
 
     @staticmethod
     def ackley(params: np.ndarray = np.arange(-32.768, 32.768, 1.0), a = 20, b = .2, c = 2 * np.pi):
@@ -192,23 +170,6 @@ class Function:
         term1 = np.sin(np.pi * w[0])**2
         term2 = np.sum((first -1)**2 * (1 + 10 * np.sin(np.pi * second)**2))
         term3 = (w[-1] - 1)**2 * (1 + np.sin(2 * np.pi * w[-1])**2)
-
-        return term1 + term2 + term3
-    
-    @staticmethod
-    def levy_13(params: np.ndarray) -> float:
-        """
-        Levy function N.13 (2-dimensional).
-
-        Parameters:
-            params (np.ndarray): Input vector of length 2.
-
-        Returns:
-            float: Function value.
-        """
-        term1 = np.sin(3 * np.pi * params[0])**2
-        term2 = (params[0] - 1)**2 * (1 + np.sin(3 * np.pi * params[1])**2)
-        term3 = (params[1] - 1)**2 * (1 + np.sin(2 * np.pi * params[1])**2)
 
         return term1 + term2 + term3
 
