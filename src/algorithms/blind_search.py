@@ -40,9 +40,10 @@ class BlindSearch(Algorithm):
         history = []
 
         # Generate a random starting point within the bounds
-        x = np.random.uniform(self.lower_bound, self.upper_bound) 
-        y = np.random.uniform(self.lower_bound, self.upper_bound)
-        point = [x, y]
+        point = np.array([
+            np.random.uniform(self.lower_bound, self.upper_bound),
+            np.random.uniform(self.lower_bound, self.upper_bound)
+        ])
 
         # Evaluate the function at the starting point
         z = self.function(np.array(point))
@@ -54,9 +55,10 @@ class BlindSearch(Algorithm):
         # or until the iteration limit is reached
         while min_z != 0 and k < self.iterations:
             # Generate a new random point
-            x = np.random.uniform(self.lower_bound, self.upper_bound)
-            y = np.random.uniform(self.lower_bound, self.upper_bound)
-            point = np.array([x, y])
+            point = np.array([
+                np.random.uniform(self.lower_bound, self.upper_bound),
+                np.random.uniform(self.lower_bound, self.upper_bound)
+            ])
 
             # Evaluate function at new point
             z = self.function(point)
