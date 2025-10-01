@@ -22,7 +22,7 @@ class HillClimbing(Algorithm):
             function (callable): Function to minimize. Must accept a NumPy array.
             iterations (int, optional): Maximum number of iterations without improvement (default is 10,000).
             neighbors (int, optional): Number of neighbor candidates to generate in each iteration (default is 15).
-            sigma (float, optional): Standard deviation of the Gaussian distribution (default is 0.01).
+            sigma (float, optional): Standard deviation of the Gaussian distribution (default is 0.6).
         """
         super().__init__(lower_bound, upper_bound, function, iterations)
         self.neighbors = neighbors
