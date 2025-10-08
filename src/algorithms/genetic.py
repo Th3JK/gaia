@@ -1,4 +1,44 @@
 import numpy as np
+
+from src.algorithms.algorithm import Algorithm
+
+class Genetic(Algorithm):
+    def __init__(self, lower_bound, upper_bound, function, iterations=10_000, range = (0, 100)):
+        super().__init__(lower_bound, upper_bound, function, iterations)
+        self.range = range
+        self.np = 20
+        self.g = 200
+        self.d = 20
+        self.cites
+
+    @staticmethod
+    def _get_distance(a, b):
+        return np.sqrt(np.sum((a - b) ** 2))
+
+    def _generate_cities(self, n):
+        cities = list()
+        for i in range(n):
+            x = np.random.uniform(*self.range)
+            y = np.random.uniform(*self.range)
+            cities.append((x, y))
+        return cities
+
+    @staticmethod
+    def _generate_individual(cities):
+        individual = np.deepcopy(cities)
+        np.random.shuffle(individual)
+        return individual
+
+    def _generate_population(self, cities):
+        population = list()
+        for i in range(self.np):
+            individual = self._generate_individual(cities)
+            population.append(individual)
+        return population
+
+    def run(self):
+        pass
+import numpy as np
 from src.tsp_utils import TSPUtils
 
 

@@ -223,7 +223,7 @@ class Function:
             (Function.ackley, (-32.768, 32.768, 1.0)),
             (Function.rastrigin, (-5.12, 5.12, 0.6)),
             (Function.rosenbrock, (-10, 10, 0.3)),
-            (Function.griewank, (-50, 50, 1.0)),
+            (Function.griewank, (-10, 10, 0.5)),
             (Function.schwefel, (-500, 500, 2.5)),
             (Function.levy, (-10, 10, 0.1)),
             (Function.michalewicz, (0, np.pi, 0.1)),
