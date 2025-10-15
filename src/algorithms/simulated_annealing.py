@@ -12,7 +12,17 @@ class SimulatedAnnealing(Algorithm):
     escape local minima. The probability of accepting worse solutions decreases
     over time according to a cooling schedule.
     """
-    def __init__(self, lower_bound, upper_bound, function, iterations=1000, initial_temperature=100, minimal_temperature=.5, alpha=.9, sigma=.6):
+    def __init__(
+            self,
+            lower_bound,
+            upper_bound,
+            function,
+            iterations=1_000,
+            initial_temperature=100,
+            minimal_temperature=.5,
+            alpha=.9,
+            sigma=.6
+        ):
         """
         Initialize the SimulatedAnnealing algorithm.
 

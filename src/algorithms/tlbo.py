@@ -19,7 +19,7 @@ class TLBO(Algorithm):
         function,
         population_size=30,
         dimension=2,
-        max_evaluations=3000,
+        max_evaluations=3_000,
     ):
         """
         Initialize TLBO algorithm.
@@ -37,9 +37,6 @@ class TLBO(Algorithm):
         self.dimension = dimension
         self.max_evaluations = max_evaluations
 
-    # --------------------------
-    # Helper methods
-    # --------------------------
 
     @staticmethod
     def generate_population(lower_bound, upper_bound, population_size, dimension):
@@ -50,10 +47,6 @@ class TLBO(Algorithm):
     def evaluate_population(population, function):
         """Evaluate all individuals and return fitness array."""
         return np.array([function(ind) for ind in population])
-
-    # --------------------------
-    # Main algorithm
-    # --------------------------
 
     def run(self):
         """

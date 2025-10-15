@@ -5,8 +5,7 @@ from src.algorithms.algorithm import Algorithm
 
 
 class Soma(Algorithm):
-    def __init__(
-        self,
+    def __init__(self,
         lower_bound,
         upper_bound,
         function,
@@ -43,9 +42,6 @@ class Soma(Algorithm):
         self.path_length = path_length
         self.dimension = dimension
 
-    # ----------------------------
-    # Helpers
-    # ----------------------------
     @staticmethod
     def generate_population(lower_bound, upper_bound, num_individuals, dimension=2):
         """Generate a population of individuals uniformly within the given bounds."""
@@ -85,9 +81,6 @@ class Soma(Algorithm):
 
         return ind
 
-    # ----------------------------
-    # Main algorithm
-    # ----------------------------
     def run(self):
         """
         Run SOMA (all-to-one).

@@ -13,7 +13,13 @@ class Genetic:
         mutation_prob (float): Probability of mutation.
     """
 
-    def __init__(self, cities, population_size=20, generations=200, mutation_prob=0.2):
+    def __init__(
+            self,
+            cities,
+            population_size=20,
+            generations=200,
+            mutation_prob=0.2
+        ):
         """
         Initialize the Genetic Algorithm for TSP.
 

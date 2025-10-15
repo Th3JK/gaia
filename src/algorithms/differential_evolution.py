@@ -20,8 +20,17 @@ class DifferentialEvolution(Algorithm):
     optimization problems.
     """
 
-    def __init__(self, lower_bound, upper_bound, function, iterations=10_000,
-                 individuals=10, mutation=.5, crossover=.5, cycles=100):
+    def __init__(
+            self,
+            lower_bound,
+            upper_bound,
+            function,
+            iterations=10_000,
+            individuals=10,
+            mutation=.5,
+            crossover=.5,
+            cycles=100
+        ):
         """
         Initialize the DifferentialEvolution algorithm.
 

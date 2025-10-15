@@ -12,7 +12,15 @@ class HillClimbing(Algorithm):
     improvement is found for a number of iterations or the maximum
     number of iterations is reached.
     """
-    def __init__(self, lower_bound, upper_bound, function, iterations=10_000, neighbors=15, sigma =.6):
+    def __init__(
+            self,
+            lower_bound,
+            upper_bound,
+            function,
+            iterations=10_000,
+            neighbors=15,
+            sigma =.6
+        ):
         """
         Initialize the HillClimbing algorithm.
 

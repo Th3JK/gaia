@@ -11,7 +11,13 @@ class Algorithm:
     """
 
     @abstractmethod
-    def __init__(self, lower_bound, upper_bound, function, iterations=1000):
+    def __init__(
+            self,
+            lower_bound,
+            upper_bound,
+            function,
+            iterations=1000
+        ):
         """
         Initialize the optimization algorithm.
 

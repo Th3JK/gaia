@@ -16,7 +16,13 @@ class AntColony:
         history (list): List of best paths found per generation.
     """
 
-    def __init__(self, cities, n_ants=20, generations=100, evaporation_rate=0.5):
+    def __init__(
+            self,
+            cities,
+            n_ants=20,
+            generations=100,
+            evaporation_rate=0.5
+        ):
         """
         Initialize the Ant Colony Optimization algorithm.
 
@@ -37,10 +43,6 @@ class AntColony:
 
         # Store history of best paths
         self.history = []
-
-    # ------------------------------------------------------------------
-    # Helper Methods
-    # ------------------------------------------------------------------
 
     def _compute_distance_matrix(self):
         """Compute symmetric distance matrix between all cities."""
@@ -91,9 +93,6 @@ class AntColony:
         probabilities = weights / np.sum(weights)
         return random.choices(list(unvisited), weights=probabilities)[0]
 
-    # ------------------------------------------------------------------
-    # Core Algorithm
-    # ------------------------------------------------------------------
 
     def run(self, animate_fn=None, animation_path=None):
         """

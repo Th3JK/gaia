@@ -5,9 +5,22 @@ from src.algorithms.algorithm import Algorithm
 
 class Swarm(Algorithm):
 
-    def __init__(self, lower_bound, upper_bound, function, max_iterations=10_000, population_size=20, max_cycles=500,
-        cognitive_coeff=2, social_coeff=2, velocity_max=1, velocity_min=-1, inertia_max=0.9, inertia_min=0.4, dimension=2,
-    ):
+    def __init__(
+            self,
+            lower_bound,
+            upper_bound,
+            function,
+            max_iterations=10_000,
+            population_size=20,
+            max_cycles=500,
+            cognitive_coeff=2,
+            social_coeff=2,
+            velocity_max=1,
+            velocity_min=-1,
+            inertia_max=0.9,
+            inertia_min=0.4,
+            dimension=2,
+        ):
         """
         Particle Swarm Optimization (PSO) implementation.
 

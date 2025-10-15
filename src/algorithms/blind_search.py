@@ -13,7 +13,13 @@ class BlindSearch(Algorithm):
       - a function value of 0 is found, or
       - the maximum number of iterations without improvement is reached.
     """
-    def __init__(self, lower_bound, upper_bound, function, iterations=10_000):
+    def __init__(
+            self,
+            lower_bound,
+            upper_bound,
+            function,
+            iterations=10_000
+        ):
         """
         Initialize the BlindSearch algorithm.
 
