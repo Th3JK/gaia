@@ -76,7 +76,8 @@ class AntColony:
 
         return best_path
 
-    def _select_next_city(self, current_city, unvisited, pheromone, visibility):
+    @staticmethod
+    def _select_next_city(current_city, unvisited, pheromone, visibility):
         """
         Select next city probabilistically based on pheromone and visibility.
         """
