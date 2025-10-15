@@ -4,6 +4,7 @@ from src.algorithms.swarm import Swarm
 from src.algorithms.soma import Soma
 from src.algorithms.firefly import Firefly
 from src.algorithms.tlbo import TLBO
+from src.csv_export import csv_export
 from src.function import Function
 from src.solution import Solution
 
@@ -57,4 +58,4 @@ def compare_algorithms(num_experiments=10, save_dir="../results"):
 
     # Save CSV
     os.makedirs(save_dir, exist_ok=True)
-    save_results_to_csv(results, os.path.join(save_dir, "comparison_results.csv"))
+    csv_export(results, os.path.join(save_dir, "comparison_results.csv"))
