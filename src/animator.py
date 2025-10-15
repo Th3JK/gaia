@@ -84,25 +84,42 @@ class Animator:
         """
         print(f"Animating step #{index}")
 
-        # Clear previously plotted points
-        for point in self.points:
-            point.set_data([], [])
-            point.set_3d_properties([])
+        # Remove previously plotted point artists cleanly
+        for artist in self.points:
+            try:
+                artist.remove()
+            except Exception:
+                # fallback: try to clear data
+                try:
+                    artist.set_data([], [])
+                    artist.set_3d_properties([])
+                except Exception:
+                    pass
         self.points = []
 
-        # Plot new points from history
+        # Plot new points from history (history entries are lists of points)
         if index < len(self.solution.history) and self.solution.history[index]:
             for p in self.solution.history[index]:
-                if len(p) == 3:
+                # Accept sequences or numpy arrays
+                try:
+                    length = len(p)
+                except Exception:
+                    # if p is not sized, skip
+                    continue
+
+                if length == 3:
                     x_val, y_val, z_val = p
-                else:  # If z is not provided, compute it
+                elif length == 2:
                     x_val, y_val = p
                     z_val = self.solution.function(np.array([x_val, y_val]))
+                else:
+                    # unexpected shape, skip
+                    continue
 
-                point_plot, = self.ax.plot(
-                    [x_val], [y_val], [z_val], "ro", markersize=10
-                )
+                point_plot, = self.ax.plot([x_val], [y_val], [z_val], "ro", markersize=6)
                 self.points.append(point_plot)
+
+        return self.points
 
         return self.points
 
